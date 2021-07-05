@@ -22,7 +22,9 @@ document.addEventListener('DOMContentLoaded', () => {
   let pageNumber = 0
   const nextTag = document.querySelector('footer img.next')
 
-  console.log(nextTag)
+  const outputTag = document.querySelector('h2')
+  const circleTag = document.querySelector('section div.circle')
+  const bodyTag = document.querySelector('body')
 
   nextTag.addEventListener('click', () => next())
 
@@ -31,7 +33,13 @@ document.addEventListener('DOMContentLoaded', () => {
     if ( pageNumber > pages.length - 1) {
       pageNumber = 0
     }
-    console.log('next')
+    updateSection()
+  }
+
+  function updateSection() {
+    outputTag.innerHTML = pages[pageNumber].copy
+    circleTag.style.backgroundColor = pages[pageNumber].circle
+    bodyTag.style.backgroundColor = pages[pageNumber].background
   }
 
 })
