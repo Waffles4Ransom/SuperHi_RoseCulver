@@ -55,4 +55,12 @@ document.addEventListener('DOMContentLoaded', () => {
     bodyTag.style.backgroundColor = pages[pageNumber].background
   }
 
+  document.addEventListener('keyup', (e) => {
+    if (e.key === 'ArrowLeft') {
+      previous()
+    } else if (e.key === 'ArrowRight') {
+      next()
+    }
+  })
+
 })
