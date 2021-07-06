@@ -21,18 +21,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
   let pageNumber = 0
   const nextTag = document.querySelector('footer img.next')
+  const prevTag = document.querySelector('footer img.prev')
+  const randomTag = document.querySelector('footer img.random')
 
   const outputTag = document.querySelector('h2')
   const circleTag = document.querySelector('section div.circle')
   const bodyTag = document.querySelector('body')
 
   nextTag.addEventListener('click', () => next())
+  prevTag.addEventListener('click', () => previous())
+  randomTag.addEventListener('click', () => random())
 
   const next = function() {
     pageNumber += 1 
-    if ( pageNumber > pages.length - 1) {
-      pageNumber = 0
-    }
+    if ( pageNumber > pages.length - 1) pageNumber = 0
+    updateSection()
+  }
+
+  const previous = () => {
+    pageNumber -= 1
+    if (pageNumber < 0) pageNumber = pages.length - 1
+    updateSection()
+  }
+
+  const random = () => {
+    pageNumber = Math.floor(Math.random() * pages.length)
     updateSection()
   }
 
